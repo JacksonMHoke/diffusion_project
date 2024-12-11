@@ -14,10 +14,14 @@ The input to the model was an image of cells and the loss was calculated from ma
 
 The UNET performed extremely well on the mitochondria segmentation task with a low amount of training. Here is a comparison of the predicted mitochondria areas vs the manually labeled mitochondria areas:
 
-![predicted](predicted_mito.JPG) ![actual](actual_mito.JPG)
+![predicted](predicted.JPG) ![actual](actual.JPG)
 
 # Diffusion Model
 The diffusion model uses the UNET architecture, but adds in a sinusoidal time encoding. The idea of a diffusion model is to denoise an image progressively. In our case we have 1024 time steps and we slowly add in noise to each pixel after each timestep. What the model tries to do is to predict what the previous image was
 before the noise was added. The end goal of a diffusion model is to be able to create new images from pure noise. 
 
-My diffusion model has trouble creating new images, but works well on denoising images. I think this is due to the low amount of compute I have available. Here are some examples of how my diffusion model performed on prenoised images.
+My diffusion model has trouble creating new images, but works well on denoising images. When the images are more noisy, the model performs much worse as expected. I think this is due to the low amount of compute I have available. 
+
+Here are some examples of how my diffusion model performed on varying levels of prenoised images. The top image is the noisified image, the middle is the attempted denoisified image, and the bottom is the original image.
+
+![example 1](diffusion_example_1.JPG) ![example 2](diffusion_example_2.JPG) ![example 3](diffusion_example_3.JPG) ![example 4](diffusion_example_4.JPG) ![example 5](diffusion_example_5.JPG) ![example 6](diffusion_example_6.JPG) ![example 7](diffusion_example_7.JPG)
